@@ -1,0 +1,44 @@
+>>> array = numpy.array([range(6), range(10, 16)])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'numpy' is not defined
+>>> array = np.array([range(6), range(10, 16)])
+>>> array.shape
+(2, 6)
+>>> array
+array([[ 0,  1,  2,  3,  4,  5],
+       [10, 11, 12, 13, 14, 15]])
+>>> array.size
+12
+>>> array.max()
+15
+>>> array.min()
+0
+>>> np.reshape(array, (2, 6))
+array([[ 0,  1,  2,  3,  4,  5],
+       [10, 11, 12, 13, 14, 15]])
+>>> np.reshape(array, (3,2,2))
+array([[[ 0,  1],
+        [ 2,  3]],
+
+       [[ 4,  5],
+        [10, 11]],
+
+       [[12, 13],
+        [14, 15]]])
+>>> np.transpose(array)
+array([[ 0, 10],
+       [ 1, 11],
+       [ 2, 12],
+       [ 3, 13],
+       [ 4, 14],
+       [ 5, 15]])
+>>> colors = ["red", "green", "blue", "purple"]
+>>> for i in range(len(colors)):
+...     print(colors[i])
+... 
+red
+green
+blue
+purple
+>>> 

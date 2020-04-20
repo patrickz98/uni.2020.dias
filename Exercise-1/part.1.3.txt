@@ -1,0 +1,21 @@
+>>> type("Hello, World!")
+<class 'str'>
+>>> len("helloworld")
+10
+>>> len("hellö")
+5
+>>> str(123)
+'123'
+>>> x = "hello"
+>>> print(x.upper())
+HELLO
+>>> "python" > "java"
+True
+>>> "AI" in "DAIS"
+True
+>>> 
+
+
+
+
+
