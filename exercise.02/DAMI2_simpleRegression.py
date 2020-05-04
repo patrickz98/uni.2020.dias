@@ -1,65 +1,66 @@
 import numpy as np
 from numpy import *
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 data = genfromtxt('scores.csv', delimiter=',')
 
-#Extract the data needed to perform a regression
-x = array(data[:,0])
-y = array(data[:,1])
-
-#Plot the data for a first impression
-plt.figure(1)
-plt.scatter(x,y)
-plt.xlabel('Hours of study')
-plt.ylabel('Test scores')
-plt.show()
+# Extract the data needed to perform a regression
+x = array(data[:, 0])
+y = array(data[:, 1])
 
 
+def estimate_coef(x, y):
+    # number of observations/points
+    n = np.size(x)
 
-def estimate_coef(x, y): 
-	# number of observations/points 
-	n = np.size(x) 
+    # HERE: Get the mean of x and y vector (hint: use built-in functions)
+    x_mean = x.mean()
+    y_mean = y.mean()
 
-	# HERE: Get the mean of x and y vector (hint: use built-in functions)
-	
+    # calculating cross-deviation and deviation about x
+    nominal = 0
+    for idx in range(n):
+        nominal += (x[idx] - x_mean) * (y[idx] - y_mean)
 
-	# calculating cross-deviation and deviation about x 
-	SS_xy = np.sum(y*x) - n*m_y*m_x 
-	SS_xx = np.sum(x*x) - n*m_x*m_x 
+    counter = 0
+    for idx in range(n):
+        counter += (x[idx] - x_mean) ** 2
 
-	# HERE: Calculate the regression coefficients 
-	beta_1 = 
-	beta_0 = 
-	
-	return(beta_0, beta_1) 
+    # HERE: Calculate the regression coefficients
+    beta_1 = nominal / counter
+    beta_0 = y_mean - beta_1 * x_mean
 
-def plot_regression_line(x, y, b): 
-	# HERE: plot the actual points as scatter plot 
+    return beta_0, beta_1
 
-	# HERE: compute the predicted response vector 
-	y_pred = 
 
-	# plotting the regression line 
-	plt.plot(x, y_pred, color = "k") 
+def plot_regression_line(x, y, b):
+    # HERE: plot the actual points as scatter plot
 
-	# putting labels 
-	plt.xlabel('x') 
-	plt.ylabel('y') 
+    # HERE: compute the predicted response vector
+    y_pred = [b[0] + b[1] * val for val in x]
 
-	# function to show plot 
-	plt.show() 
+    # plotting the regression line
+    plt.plot(x, y_pred, color="k")
+
+    # putting labels
+    plt.scatter(x, y)
+    plt.xlabel('Hours of study')
+    plt.ylabel('Test scores')
+
+    # function to show plot
+    plt.savefig("exercise.02.result.png", dpi=600)
+
 
 # DATASET INPUT
-def main(): 	
+def main():
+    # estimating coefficients
+    b = estimate_coef(x, y)
+    print('The estimated coefficients are', repr(b[0]), 'and', repr(b[1]))
 
-	# estimating coefficients 
-	b = estimate_coef(x, y) 
-	print('The estimated coefficients are', repr(b[0]), 'and', repr(b[1]))
+    # plotting regression line
+    plt.figure(2)
+    plot_regression_line(x, y, b)
 
-	# plotting regression line 
-	plt.figure(2)
-	plot_regression_line(x, y, b) 
-	
-if __name__ == "__main__": 
-	main() 
+
+if __name__ == "__main__":
+    main()
