@@ -21,7 +21,15 @@ Additional information available: number of seats, total number of and kilometer
 
 Header information:
 
-airline,avail_seat_km_per_week,incidents_85_99,fatal_accidents_85_99,fatalities_85_99,incidents_00_14,fatal_accidents_00_14,fatalities_00_14
+airline,
+avail_seat_km_per_week,
+incidents_85_99,
+fatal_accidents_85_99,
+fatalities_85_99,
+
+incidents_00_14,
+fatal_accidents_00_14,
+fatalities_00_14
 
 Source: https://github.com/fivethirtyeight/data/blob/master/airline-safety/airline-safety.csv
 

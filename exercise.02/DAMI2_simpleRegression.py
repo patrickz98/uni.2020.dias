@@ -48,7 +48,7 @@ def plot_regression_line(x, y, b):
     plt.ylabel('Test scores')
 
     # function to show plot
-    plt.savefig("exercise.02.result.png", dpi=600)
+    plt.savefig("exercise.02.04.result.png", dpi=600)
 
 
 # DATASET INPUT
