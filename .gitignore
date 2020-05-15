@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 /exercise.*/.cache/
 /exercise.*/.local/
+/exercise.*/.jupyter/
+
+*.DS_Store
